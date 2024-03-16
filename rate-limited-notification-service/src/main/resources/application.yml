@@ -1,0 +1,28 @@
+
+resilience4j:
+  ratelimiter:
+    instances:
+      # Configuración para el límite de status
+      statusRateLimiter:
+        limitForPeriod: 2
+        limitRefreshPeriod: 1m
+        timeoutDuration: 1m
+      # Configuración para el límite de noticias
+      newsRateLimiter:
+        limitForPeriod: 1
+        limitRefreshPeriod: 1d
+        timeoutDuration: 1d
+      # Configuración para el límite de marketing
+      marketingRateLimiter:
+        limitForPeriod: 3
+        limitRefreshPeriod: 1h
+        timeoutDuration: 1h
+      defaultRateLimiter: # Default rate limiter configuration
+        limitForPeriod: 3
+        limitRefreshPeriod: 1m
+spring:
+  application:
+    name: rate-limited-notification-service
+server:
+  port: 8090
+#debug: true
